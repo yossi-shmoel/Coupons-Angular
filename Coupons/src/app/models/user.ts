@@ -1,11 +1,11 @@
 export class User {
 
   public constructor(
-      public name: string,
-      public email: string,
-      public type: string,
-      public companyId: number,
-      public token?: string,
-      public id?: number
+      public Name: string,
+      public Email: string,
+      public Type: string,
+      public CompanyId: number,
+      public Token?: string,
+      public Id?: number
   ) {}
 }

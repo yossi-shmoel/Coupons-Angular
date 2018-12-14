@@ -1,3 +1,19 @@
-<p>
-  users-viewer works!
-</p>
+<h2>User - View</h2>
+<h2 *ngIf="users"> {{ users.length }} Users</h2>
+
+<div *ngIf="users">
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>email</th>
+      <th>type</th>
+      <th>companyId</th>
+    </tr>
+    <tr *ngFor="let user of users">
+      <td>{{user.Name}}</td>
+      <td>{{user.Email}}</td>
+      <td>{{user.Type}}</td>
+      <td>{{user.CompanyId}}</td>
+    </tr>
+  </table>
+</div>

@@ -2,15 +2,15 @@ export class Coupon {
 
   public constructor(
 
-      public name: string,
-      public companyId: number,
-      public startDate: Date,
-      public endDate: Date,
-      public amount: number,
-      public type: string,
-      public message: string,
-      public price: number,
-      public image: string,
-      public id?: number
+      public Name: string,
+      public CompanyId: number,
+      public Start_Date: Date,
+      public End_Date: Date,
+      public Amount: number,
+      public Type: string,
+      public Message: string,
+      public Price: number,
+      public Image: string,
+      public Id?: number
   ) {}
 }

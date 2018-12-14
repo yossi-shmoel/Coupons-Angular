@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import {Routes, RouterModule} from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { BaseComponent } from './components/layout/base/base.component';
 import { FooterComponent } from './components/layout/footer/footer.component';
@@ -18,6 +20,15 @@ import { CompanyAddComponent } from './components/models/company/company-add/com
 import { CompaniesViewerComponent } from './components/models/view/companies-viewer/companies-viewer.component';
 import { CouponsViewerComponent } from './components/models/view/coupons-viewer/coupons-viewer.component';
 import { UsersViewerComponent } from './components/models/view/users-viewer/users-viewer.component';
+
+const routes: Routes  = [
+  { path: '', redirectTo: 'view-users', pathMatch: 'full'}, // default path - pathMatch: make sure the whole path is empty string
+  { path: 'view-users', component: UsersViewerComponent},
+  { path: 'view-companies', component: CompaniesViewerComponent},
+  { path: 'view-coupons', component: CouponsViewerComponent}
+ // { path: '**', component: Page404Component}
+  ];
+
 
 
 @NgModule({
@@ -40,7 +51,11 @@ import { UsersViewerComponent } from './components/models/view/users-viewer/user
     UsersViewerComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule,
+    FormsModule,
+    RouterModule, // Routing Module import
+    RouterModule.forRoot(routes) // Our routes import
   ],
   providers: [],
   bootstrap: [BaseComponent]

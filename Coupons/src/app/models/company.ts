@@ -1,8 +1,8 @@
 export class Company {
 
   public constructor(
-    public name: string,
-    public email: string,
-    public id?: number
+    public Name: string,
+    public Email: string,
+    public Id?: number
   ) {}
 }
