@@ -1,3 +1,28 @@
-<p>
-  user-view works!
-</p>
+<div *ngIf="users.length == 0">
+  <app-loading></app-loading>
+</div>
+
+
+<div *ngIf="users.length > 0">
+  <div *ngIf="users.length > 1">
+    <h2>Users - View</h2>
+    <h2> Viewing: {{ users.length }} Users</h2>
+  </div>
+  <div *ngIf="users.length == 1">
+    <h2>Viewing: {{users[0].Name}} User</h2>
+  </div>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>email</th>
+      <th>type</th>
+      <th>companyId</th>
+    </tr>
+    <tr *ngFor="let user of users">
+      <td>{{user.Name}}</td>
+      <td>{{user.Email}}</td>
+      <td>{{user.Type}}</td>
+      <td>{{user.CompanyId}}</td>
+    </tr>
+  </table>
+</div>

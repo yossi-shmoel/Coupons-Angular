@@ -30,7 +30,7 @@ const routes: Routes = [
   { path: 'update-company/:id', component: CompanyUpdateComponent },
   { path: 'update-coupon/:id', component: UserUpdateComponent },
   { path: 'update-user/:id', component: UserAddComponent },
-  { path: 'view-users', component: UserViewComponent },
+  { path: 'view-users/:id', component: UserViewComponent },
   { path: 'view-companies/:id', component: CompanyViewComponent },
   { path: 'view-coupons/:id', component: CouponViewComponent }
   // { path: '**', component: Page404Component}
