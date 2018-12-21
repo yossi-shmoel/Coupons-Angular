@@ -1,3 +1,4 @@
+import { BaseService } from './base.service';
 import { UserCoupoonSetter } from './../models/userCouponSetter';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -9,33 +10,31 @@ import { User } from '../models/user';
 })
 export class UsersService {
 
-  private apiConnection = 'http://localhost:1695/api/'; // TODO: move to higher level
-  private apiString = this.apiConnection + 'User/' ;
+  private apiPath = 'User/';
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient,
+    private baseService: BaseService) { }
 
   public CreateOrUpdate(user: User): Observable<User> {
-    // CreateOrUpdate
-    return this.httpClient.post<User>(this.apiString + 'CreateOrUpdate', user);
+    return this.baseService.CreateOrUpdate(this.apiPath, user);
   }
 
-  public GetUser(id: number): Observable<User> {
-    // http://localhost:1695/api/User/Get?userId=1
-    return this.httpClient.get<User>(this.apiString + 'Get?userId=' + id);
+  public Get(userId: number): Observable<User> {
+    return this.baseService.GetObject(this.apiPath, userId);
   }
 
-  public GetAllUsers(): Observable<User[]> {
-    // http://localhost:1695/api/User/GetAll
-    return this.httpClient.get<User[]>(this.apiString + 'GetAll');
+  public GetAll(): Observable<User[]> {
+    return this.baseService.GetAllObjects(this.apiPath);
   }
 
-  public DeleteUser(): void {
-    // DELETE /api/User/Delete
-    this.httpClient.delete<void>(this.apiString + 'Delete');
+  public Delete(userId: number): void {
+    return this.baseService.DeleteObject(this.apiPath, userId);
   }
 
   public SetUserCoupon(data: UserCoupoonSetter): void {
     // POST /api/User/SetCouponToUser
-    this.httpClient.post<UserCoupoonSetter>(this.apiString + 'SetCouponToUser', data);
+    this.httpClient.post<UserCoupoonSetter>(
+      this.baseService.apiConnection + this.apiPath + 'SetCouponToUser', data);
   }
+
 }

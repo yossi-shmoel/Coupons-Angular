@@ -1,4 +1,7 @@
+import { Company } from './../../../../models/company';
+import { CompaniesService } from './../../../../services/companies.service';
 import { Component, OnInit } from '@angular/core';
+import { nfapply } from 'q';
 
 @Component({
   selector: 'app-company-add',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CompanyAddComponent implements OnInit {
 
-  constructor() { }
+  private company = new Company(null, null);
+  private companyName: string;
+  private companyEmail: string;
+
+  constructor(private companiesService: CompaniesService) { }
 
   ngOnInit() {
   }
 
+  private sendForm(): void {
+    this.companiesService.CreateOrUpdate(this.company).subscribe();
+  }
 }

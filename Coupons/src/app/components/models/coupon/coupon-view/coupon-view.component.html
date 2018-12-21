@@ -1,3 +1,38 @@
-<p>
-  coupon-view works!
-</p>
+<div *ngIf="coupons.length == 0">
+  <app-loading></app-loading>
+</div>
+
+
+<div *ngIf="coupons.length > 0">
+  <div *ngIf="coupons.length > 1">
+    <h2>Coupons - View</h2>
+    <h2> Viewing: {{ coupons.length }} Coupons</h2>
+  </div>
+  <div *ngIf="coupons.length == 1">
+    <h2>Viewing: {{coupons[0].Name}} coupon</h2>
+  </div>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>CompanyId</th>
+      <th>Start_Date</th>
+      <th>End_Date</th>
+      <th>Amount</th>
+      <th>Type</th>
+      <th>Message</th>
+      <th>Price</th>
+      <th>Image</th>
+    </tr>
+    <tr *ngFor="let coupon of coupons">
+      <td>{{coupon.Name}}</td>
+      <td>{{coupon.CompanyId}}</td>
+      <td>{{coupon.Start_Date}}</td>
+      <td>{{coupon.End_Date}}</td>
+      <td>{{coupon.Amount}}</td>
+      <td>{{coupon.Type}}</td>
+      <td>{{coupon.Message}}</td>
+      <td>{{coupon.Price}}</td>
+      <td>{{coupon.Image}}</td>
+    </tr>
+  </table>
+</div>

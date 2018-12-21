@@ -16,9 +16,7 @@ export class UsersViewerComponent implements OnInit {
 
   }
 
-
   ngOnInit() {
-    this.userService.GetAllUsers().subscribe(users => this.users = users);
+     this.userService.GetAll().subscribe(users => this.users = users);
   }
-
 }

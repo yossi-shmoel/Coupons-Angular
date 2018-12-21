@@ -1,3 +1,22 @@
-<p>
-  company-add works!
-</p>
+<H2>Add company</H2>
+<form #companyForm="ngForm" (ngSubmit)="sendForm()">
+  <table>
+    <tr>
+      <td>company Name</td>
+      <td>
+        <!-- <input type="text" [(ngModel)]="companyName">-->
+        <input required #companyName="ngModel" [(ngModel)]="company.Name" name="companyName" placeholder="Company Name">
+        <span *ngIf="companyName.invalid && companyName.dirty">Missing Company Name"</span>
+      </td>
+    </tr>
+    <tr>
+      <td>Company Email</td>
+      <td>
+        <!--  <input type="email" [(ngModel)]="companyEmail">-->
+        <input required #companyEmail="ngModel" [(ngModel)]="company.Email" name="companyEmail" placeholder="Company Email">
+        <span *ngIf="companyEmail.invalid && companyEmail.dirty">Missing Company Email"</span>
+      </td>
+    </tr>
+  </table>
+  <button [disabled]="companyForm.form.invalid">Send</button>
+</form>

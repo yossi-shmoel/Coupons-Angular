@@ -1,3 +1,24 @@
-<p>
-  company-view works!
-</p>
+<div *ngIf="companies.length == 0">
+  <app-loading></app-loading>
+</div>
+
+<div *ngIf="companies.length > 0">
+  <div *ngIf="companies.length > 1">
+    <h2>Companies - View</h2>
+    <h2> Viewing: {{ companies.length }} companies</h2>
+  </div>
+  <div *ngIf="companies.length == 1">
+    <h2>Viewing: {{companies[0].Name}} company</h2>
+  </div>
+
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>email</th>
+    </tr>
+    <tr *ngFor="let company of companies">
+      <td>{{company.Name}}</td>
+      <td>{{company.Email}}</td>
+    </tr>
+  </table>
+</div>

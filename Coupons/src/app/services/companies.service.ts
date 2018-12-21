@@ -1,3 +1,4 @@
+import { BaseService } from './base.service';
 import { Observable } from 'rxjs';
 import { Company } from './../models/company';
 import { HttpClient } from '@angular/common/http';
@@ -7,31 +8,27 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class CompaniesService {
+  // Obselete see users service
 
-  private apiConnection = 'http://localhost:1695/api/'; // TODO: move to higher level
-  private apiString = this.apiConnection + 'Companies/';
+  private apiPath = 'Companies/';
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient,
+    private baseService: BaseService) { }
 
   public CreateOrUpdate(company: Company): Observable<Company> {
-    // POST /api/Companies/CreateOrUpdate
-    return this.httpClient.post<Company>(this.apiString + 'CreateOrUpdate', company);
+    return this.baseService.CreateOrUpdate(this.apiPath, company);
   }
 
-  public Get(id: number): Observable<Company> {
-    // GET /api/Companies/Get
-    return this.httpClient.get<Company>(this.apiString + 'Get');
+  public Get(companyId: number): Observable<Company> {
+    return this.baseService.GetObject(this.apiPath, companyId);
   }
 
   public GetAll(): Observable<Company[]> {
-    // GET /api/Companies/GetAll
-    return this.httpClient.get<Company[]>(this.apiString + 'GetAll');
+    return this.baseService.GetAllObjects(this.apiPath);
   }
 
-  public Delete(id: number): void {
-    // DELETE /api/Coupons/Delete
-    this.httpClient.delete<void>(this.apiString + 'Delete');
+  public Delete(companyId: number): void {
+    return this.baseService.DeleteObject(this.apiPath, companyId);
   }
 
-  // DELETE /api/Companies/Delete
 }
