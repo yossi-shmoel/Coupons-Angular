@@ -28,8 +28,8 @@ const routes: Routes = [
   { path: 'add-coupon', component: CouponAddComponent },
   { path: 'add-user', component: UserAddComponent },
   { path: 'update-company/:id', component: CompanyUpdateComponent },
-  { path: 'update-coupon/:id', component: UserUpdateComponent },
-  { path: 'update-user/:id', component: UserAddComponent },
+  { path: 'update-coupon/:id', component: CouponUpdateComponent },
+  { path: 'update-user/:id', component: UserUpdateComponent },
   { path: 'view-users/:id', component: UserViewComponent },
   { path: 'view-companies/:id', component: CompanyViewComponent },
   { path: 'view-coupons/:id', component: CouponViewComponent }

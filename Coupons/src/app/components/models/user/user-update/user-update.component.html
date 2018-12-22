@@ -1,3 +1,26 @@
-<p>
-  user-update works!
-</p>
+<H2>Update User</H2>
+<div *ngIf="!user">
+  <app-loading></app-loading>
+</div>
+<form #companyForm="ngForm" (ngSubmit)="sendForm()" *ngIf="user">
+  <table>
+    <tr>
+      <td>User Email</td>
+      <td>
+        <input required #userEmail="ngModel" [(ngModel)]="user.Email" name="userEmail" placeholder="User Email"
+          readonly>
+      </td>
+    </tr>
+    <tr>
+      <td>User Name</td>
+      <td>
+        <input required #userName="ngModel" [(ngModel)]="user.Name" name="userName" placeholder="User Name">
+      </td>
+    </tr>
+    <tr>
+    <tr>
+      <td></td>
+      <td> <button [disabled]="companyForm.form.invalid">Update</button></td>
+    </tr>
+  </table>
+</form>

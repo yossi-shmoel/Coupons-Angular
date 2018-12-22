@@ -20,6 +20,6 @@ export class CompanyUpdateComponent implements OnInit {
   }
 
   private sendForm(): void {
-   // alert(this.company.Id);
+    this.companiesService.CreateOrUpdate(this.company).subscribe(c => this.company = c);
   }
 }

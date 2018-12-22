@@ -1,9 +1,18 @@
 <H2>Update company</H2>
-<div *ngIf ="!company">
+<div *ngIf="!company">
   <app-loading></app-loading>
 </div>
 <form #companyForm="ngForm" (ngSubmit)="sendForm()" *ngIf="company">
   <table>
+    <tr>
+      <td>Company Email</td>
+      <td>
+        <!--  <input type="email" [(ngModel)]="companyEmail">-->
+        <input required #companyEmail="ngModel" [(ngModel)]="company.Email" name="companyEmail" placeholder="Company Email"
+          readonly>
+        <span *ngIf="companyEmail.invalid && companyEmail.dirty">Missing Company Email"</span>
+      </td>
+    </tr>
     <tr>
       <td>company Name</td>
       <td>
@@ -13,13 +22,8 @@
       </td>
     </tr>
     <tr>
-      <td>Company Email</td>
-      <td>
-        <!--  <input type="email" [(ngModel)]="companyEmail">-->
-        <input required #companyEmail="ngModel" [(ngModel)]="company.Email" name="companyEmail" placeholder="Company Email">
-        <span *ngIf="companyEmail.invalid && companyEmail.dirty">Missing Company Email"</span>
-      </td>
+      <td></td>
+      <td> <button [disabled]="companyForm.form.invalid">Update</button></td>
     </tr>
   </table>
-  <button [disabled]="companyForm.form.invalid">Send</button>
 </form>

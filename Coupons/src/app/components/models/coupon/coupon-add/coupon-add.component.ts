@@ -1,3 +1,5 @@
+import { Coupon } from 'src/app/models/coupon';
+import { CouponsService } from './../../../../services/coupons.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CouponAddComponent implements OnInit {
 
-  constructor() { }
+  coupon = new Coupon(null, null, null, null, null, null, null, null, null);
+
+  constructor(private couponsService: CouponsService) { }
 
   ngOnInit() {
+  }
+
+  private sendForm(): void {
+    this.couponsService.CreateOrUpdate(this.coupon).subscribe();
   }
 
 }

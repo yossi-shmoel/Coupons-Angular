@@ -1,3 +1,33 @@
-<p>
-  user-add works!
-</p>
+<H2>Add User</H2>
+<form #companyForm="ngForm" (ngSubmit)="sendForm()" >
+  <table>
+    <tr>
+      <td>User Email</td>
+      <td>
+        <input required #userEmail="ngModel" [(ngModel)]="user.Email" name="userEmail" placeholder="User Email">
+      </td>
+    </tr>
+    <tr>
+      <td>User Name</td>
+      <td>
+        <input required #userName="ngModel" [(ngModel)]="user.Name" name="userName" placeholder="User Name">
+      </td>
+    </tr>
+    <tr>
+      <td>User Type</td>
+      <td>
+        <input required #userType="ngModel" [(ngModel)]="user.Type" name="userType" placeholder="User Type">
+      </td>
+    </tr>
+    <tr>
+      <td>User CompanyId</td>
+      <td>
+        <input required #userCompanyId="ngModel" [(ngModel)]="user.CompanyId" name="userCompanyId" placeholder="User Company Id">
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td> <button [disabled]="companyForm.form.invalid">Add</button></td>
+    </tr>
+  </table>
+</form>

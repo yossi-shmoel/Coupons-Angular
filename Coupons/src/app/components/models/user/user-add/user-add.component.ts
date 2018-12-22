@@ -1,3 +1,5 @@
+import { User } from './../../../../models/user';
+import { UsersService } from 'src/app/services/users.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserAddComponent implements OnInit {
 
-  constructor() { }
+  user = new User(null, null, null, null);
+
+  constructor(private usersService: UsersService) { }
 
   ngOnInit() {
   }
 
+  private sendForm(): void {
+    this.usersService.CreateOrUpdate(this.user).subscribe();
+  }
 }

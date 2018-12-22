@@ -1,3 +1,68 @@
-<p>
-  coupon-add works!
-</p>
+<H2>Add Coupon</H2>
+<form #couponForm="ngForm" (ngSubmit)="sendForm()">
+  <table>
+    <tr>
+      <td>Coupon Name</td>
+      <td>
+        <input required #couponName="ngModel" [(ngModel)]="coupon.Name" name="couponName" placeholder="Coupon Name">
+        <span *ngIf="couponName.invalid && couponName.dirty">Missing Coupon Name"</span>
+      </td>
+    </tr>
+    <tr>
+      <td>Company Id</td>
+      <td>
+        <input type="number" required #companyId="ngModel" [(ngModel)]="coupon.companyId" name="companyId" placeholder="company Id">
+        <span *ngIf="companyId.invalid && companyId.dirty">Missing Company Email"</span>
+      </td>
+      <td>Get company id from logged in user</td>
+    </tr>
+    <tr>
+      <td>Coupon Start Date</td>
+      <td>
+        <input type="date" required #couponStart_Date="ngModel" [(ngModel)]="coupon.start_Date" name="couponStart_Date">
+      </td>
+    </tr>
+    <tr>
+      <td>Coupon End Date</td>
+      <td>
+        <input type="date" required #couponEnd_Date="ngModel" [(ngModel)]="coupon.end_Date" name="couponEnd_Date">
+      </td>
+    </tr>
+    <tr>
+      <td>Coupon Amount</td>
+      <td>
+        <input type="number" required #couponAmount="ngModel" [(ngModel)]="coupon.amount" name="couponAmount"
+          placeholder="Coupon Amount">
+      </td>
+    </tr>
+    <tr>
+      <td>Coupon Type</td>
+      <td>
+        <input required #couponType="ngModel" [(ngModel)]="coupon.type" name="couponType" placeholder="Coupon Type">
+      </td>
+    </tr>
+    <tr>
+      <td>Coupon Message</td>
+      <td>
+        <input required #couponMessage="ngModel" [(ngModel)]="coupon.message" name="couponMessage" placeholder="Coupon Message">
+      </td>
+    </tr>
+    <tr>
+      <td>Coupon Price</td>
+      <td>
+        <input type="number" required #couponPrice="ngModel" [(ngModel)]="coupon.price" name="couponPrice" placeholder="Coupon Price">
+      </td>
+    </tr>
+    <tr>
+      <td>Coupon Image</td>
+      <td>
+        <input type="file" #couponImage="ngModel" [(ngModel)]="coupon.image" name="couponImage" placeholder="Coupon Image">
+      </td>
+      <td>TBD</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td> <button [disabled]="couponForm.form.invalid">Send</button></td>
+    </tr>
+  </table>
+</form>

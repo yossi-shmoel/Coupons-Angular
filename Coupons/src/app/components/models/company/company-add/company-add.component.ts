@@ -1,7 +1,6 @@
 import { Company } from './../../../../models/company';
 import { CompaniesService } from './../../../../services/companies.service';
 import { Component, OnInit } from '@angular/core';
-import { nfapply } from 'q';
 
 @Component({
   selector: 'app-company-add',
